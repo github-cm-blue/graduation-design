@@ -66,11 +66,32 @@
                             <view class="btn">
                                 <view class="sub">-</view>
                                 <view class="count">5</view>
-                                <view class="add">+</view>
+                                <view class="add" @click="addCart">+</view>
+
+
                             </view>
                         </view>
                     </view>
                 </view>
+            </view>
+        </view>
+
+        <!-- 抛物线元素 -->
+        <view :animation="animationData" :style="{ left: `${shallStyle.offsetLeft}px`, top: `${shallStyle.offsetTop}px` }"
+            class="shall">+
+        </view>
+
+        <!-- 购物车 -->
+        <view class="cart">
+            <view class="icon" @click="addCart">
+                <uni-icons custom-prefix="custom-icon" color="#fff" type="iconfont icon-gouwuche" size="30"></uni-icons>
+            </view>
+            <view class="sum">
+                <view class="total">￥599.50</view>
+                <view class="commission">辅导费￥200</view>
+            </view>
+            <view class="pay">
+                <view>提交订单</view>
             </view>
         </view>
 
@@ -91,8 +112,74 @@ const onClickItem = (e: any) => {
     }
 }
 
-const paddingTop = ref(0)
+const zindex = ref(-1)
+const animationData = ref<any>(null)
+const shallStyle = ref({
+    offsetLeft: 0,
+    offsetTop: 0
+})
 
+//添加购物车
+const addCart = (event: any) => {
+    console.log(event, '时机');
+    zindex.value = 9999
+    const { x, y } = event.detail
+    console.log(x, y, '数据');
+
+    nextTick(() => {
+        shallStyle.value.offsetLeft = x
+        shallStyle.value.offsetTop = y
+    })
+    setTimeout(() => {
+        console.log(shallStyle.value.offsetLeft, shallStyle.value.offsetTop, '最新数据');
+
+        const startPoint = { x: x, y: y }; // 起始位置 (右上角)
+        const endPoint = { x: 5, y: 480 }; // 目标位置 (左下角)
+
+        const duration = 1000; // 动画持续时间
+        const frameRate = 60; // 帧率
+        const totalFrames = duration / (1000 / frameRate); // 总帧数
+
+        const animation = uni.createAnimation({
+            duration: duration, // 动画持续时间
+            timingFunction: 'ease-out', // 缓动函数
+        });
+
+        const stepX = (endPoint.x - startPoint.x) / totalFrames; // 每帧在X轴上的位移
+        const stepY = (endPoint.y - startPoint.y) / totalFrames; // 每帧在Y轴上的位移
+
+        let currentFrame = 0; // 当前帧数
+        let currentX = startPoint.x; // 当前X位置
+        let currentY = startPoint.y; // 当前Y位置
+
+        const moveElement = () => {
+            animation.translate(currentX, currentY).step();
+
+            animationData.value = animation.export();
+
+            if (currentFrame < totalFrames) {
+                currentFrame++;
+                currentX += stepX;
+                currentY += stepY;
+                setTimeout(moveElement, 1000 / frameRate);
+            } else {
+                // 动画结束后的操作
+                // ...
+                animationData.value = null
+                zindex.value = -1
+            }
+        };
+
+        moveElement();
+
+    }, 0)
+
+
+
+}
+
+// 距离顶部的距离
+const paddingTop = ref(0)
 // #ifdef MP-WEIXIN
 onLoad(() => {
     const res = uni.getMenuButtonBoundingClientRect()
@@ -356,6 +443,7 @@ onLoad(() => {
                         .btn {
                             display: flex;
                             align-items: center;
+                            position: relative;
 
                             .count {
                                 margin: 0 6px;
@@ -375,6 +463,14 @@ onLoad(() => {
                             .add {
                                 background-color: $uni-color-primary;
                                 color: #fff;
+
+                                &.copy {
+                                    // 新元素
+                                    position: absolute;
+                                    top: 0;
+                                    right: 0;
+                                    background-color: green;
+                                }
                             }
                         }
                     }
@@ -383,4 +479,64 @@ onLoad(() => {
         }
 
     }
-}</style>
+
+    .cart {
+        width: 100%;
+        background-color: #333;
+        color: #fff;
+        display: flex;
+        align-items: center;
+
+        .icon {
+            width: 50px;
+            height: 50px;
+            background-color: $uni-color-primary;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transform: translateY(-25%);
+            margin-left: 20px;
+        }
+
+        .sum {
+            margin-left: 10px;
+            font-size: 14px;
+
+            .commission {
+                font-size: 12px;
+                margin-top: 5px;
+            }
+        }
+
+        .pay {
+            margin-left: auto;
+
+            view {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: $uni-color-primary;
+                height: 50px;
+                padding: 0 10px;
+            }
+        }
+    }
+
+    .shall {
+        width: 20px;
+        height: 20px;
+        background-color: green;
+        color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 5px;
+        position: absolute;
+
+        // 目标位置
+        // left: 30px;
+        // top: 472px;
+    }
+}
+</style>

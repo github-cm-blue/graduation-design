@@ -12,4 +12,6 @@ onHide(() => {
 </script>
 <style>
 @import url('./static/styles/main.css');
+/* @import url('https://at.alicdn.com/t/c/font_4093288_kamqy12uhsk.css'); */
+@import url('./static/styles/iconfont.css');
 </style>

@@ -9,7 +9,7 @@
         </view>
         <!-- 订单信息 -->
         <view class="order-list">
-            <view class="item">
+            <view class="item" v-for="item in 8" :key="item">
                 <view class="top">
                     <view class="left">成品辅导</view>
                     <view class="right">待发货</view>
@@ -49,19 +49,27 @@ const onClickItem = (e: any) => {
     
 <style lang="scss" scoped>
 .order-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
     .tabs {
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
 
     .order-list {
+        flex: 1;
+        width: 100%;
+        height: 100%;
+        overflow-y: auto;
         margin-top: 10px;
 
         .item {
-            border: 1px solid red;
             border-radius: 10px;
             margin: 0 5px;
             background-color: #fff;
             padding: 10px;
+            margin-bottom: 10px;
 
             .top {
                 display: flex;
@@ -113,13 +121,20 @@ const onClickItem = (e: any) => {
             .bottom {
                 display: flex;
                 margin-top: 10px;
+                justify-content: flex-end;
                 .btn {
-                    background-color: $uni-color-primary;
+                    color: #333;
+                    border: 1px solid #666;
                     padding: 5px 8px;
                     border-radius: 10px;
                     font-size: 13px;
-                    color: #fff;
                     margin-left: 5px;
+
+                    &:last-child {
+                        background-color: $uni-color-primary;
+                        color: #fff;
+                        border: 0;
+                    }
                 }
             }
 
