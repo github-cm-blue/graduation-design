@@ -1,7 +1,7 @@
 <template>
     <view class="order-container">
         <!-- 导航栏 -->
-        <GdNavbar title="订单" />
+        <GdNavbar title="订单" back/>
         <!-- tabs -->
         <view class="tabs">
             <uni-segmented-control :current="current" :values="items" @clickItem="onClickItem" styleType="text"
@@ -28,14 +28,12 @@
                 </view>
             </view>
         </view>
-        <!-- tabbar -->
-        <GdTabbar :selected="3" />
+
     </view>
 </template>
     
 <script setup lang='ts'>
 import GdNavbar from '@/components/gd-navbar/index.vue'
-import GdTabbar from '@/components/gd-tabbar/index.vue'
 
 const current = ref(0)
 const items = ref(['全部', '待审核', '待发货', '待收货', '已完成'])

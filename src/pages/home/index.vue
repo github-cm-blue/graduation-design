@@ -3,8 +3,7 @@
     <!-- 导航栏 -->
     <GdNavbar title="毕业设计辅导" />
     <!-- 轮播图 -->
-    <uni-swiper-dot class="uni-swiper-dot-box" @clickItem="clickItem" :current="current" mode="round"
-      field="content">
+    <uni-swiper-dot class="uni-swiper-dot-box" @clickItem="clickItem" :current="current" mode="round" field="content">
       <swiper class="swiper-box" :current="swiperDotIndex">
         <swiper-item v-for="(item, index) in list" :key="index">
           <view class="swiper-item">
@@ -34,20 +33,22 @@
     <!-- 商品列表 -->
     <view class="flower-list">
       <view class="flower-item" v-for="item in 5" :key="item">
-        <view class="image">
-          <image src="https://img2.baidu.com/it/u=400220221,2870760241&fm=253&fmt=auto&app=120&f=JPEG?w=563&h=410" />
-        </view>
-        <view class="info">
-          <text class="title">基于51单片机的环境监测系统</text>
-          <!-- <text class="color">红玫瑰</text>
+        <view @click="toProDetail">
+          <view class="image">
+            <image src="https://img2.baidu.com/it/u=400220221,2870760241&fm=253&fmt=auto&app=120&f=JPEG?w=563&h=410" />
+          </view>
+          <view class="info">
+            <text class="title">基于51单片机的环境监测系统</text>
+            <!-- <text class="color">红玫瑰</text>
           <text class="count">33支</text> -->
-        </view>
-        <view class="price">
-          <text>￥599.00</text>
+          </view>
+          <view class="price">
+            <text>￥599.00</text>
+          </view>
         </view>
         <view class="other">
           <view class="left">
-            <text>销量：256</text>
+            <text>主控芯片：SMT32</text>
           </view>
           <view class="right">
             <uni-icons type="cart" size="20"></uni-icons>
@@ -57,7 +58,7 @@
     </view>
 
     <!-- tabbar -->
-    <GdTabbar :selected="0"/>
+    <GdTabbar :selected="0" />
   </view>
 </template>
   
@@ -73,6 +74,9 @@ const list = [
 
 const clickItem = () => {
 
+}
+const toProDetail = () => {
+  uni.navigateTo({ url: '/pages/product/detail' })
 }
 
 </script>
@@ -225,6 +229,10 @@ const clickItem = () => {
         .left {
           font-size: 12px;
           color: #666;
+
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
         }
 
         .right {

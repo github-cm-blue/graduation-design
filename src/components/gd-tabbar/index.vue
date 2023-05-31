@@ -35,10 +35,10 @@ const list = [{
     "text": "消息"
 },
 {
-    "pagePath": "pages/order/index",
-    "iconPath": "../../static/images/tabbar/order.png",
-    "selectedIconPath": "../../static/images/tabbar/orderactive.png",
-    "text": "订单"
+    "pagePath": "pages/cart/index",
+    "iconPath": "../../static/images/tabbar/cart.png",
+    "selectedIconPath": "../../static/images/tabbar/cartactive.png",
+    "text": "购物车"
 },
 {
     "pagePath": "pages/profile/index",
@@ -77,6 +77,7 @@ const switchTab = (item: any, index: Number) => {
         padding-bottom: env(safe-area-inset-bottom); // 适配iphoneX的底部
         width: 100%;
         max-width: 1500rpx;
+        z-index: 999;
 
         .tab-bar-item {
             flex: 1;

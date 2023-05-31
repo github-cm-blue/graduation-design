@@ -4,7 +4,9 @@
         <view class="nav-container"
             :style="{ height: `${navHeight}px`, paddingTop: `${paddingTop}px`, paddingBottom: `${paddingButtom}px` }">
             <view class="content">
-                <uni-icons v-if="back" type="back" size="25"></uni-icons>
+                <view v-if="back" @click="navigatorBack">
+                    <uni-icons  type="back" size="25"></uni-icons>
+                </view>
                 <view class="title">{{ title }}</view>
             </view>
         </view>
@@ -27,7 +29,7 @@ const paddingTop = ref(0)
 const paddingButtom = ref(0)
 
 // #ifdef MP-WEIXIN
-onLoad(() => {
+onShow(() => {
     const res = uni.getMenuButtonBoundingClientRect()
     navHeight.value = res.height
     paddingTop.value = res.top
@@ -35,6 +37,7 @@ onLoad(() => {
 })
 // #endif
 
+const navigatorBack = () => uni.navigateBack()
 
 </script>
     
@@ -61,6 +64,11 @@ onLoad(() => {
         .title {
             font-size: 18px;
             margin-left: 30px;
+
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 8em;
         }
     }
 }

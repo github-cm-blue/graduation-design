@@ -43,7 +43,7 @@
         <!-- 侧边栏 -->
         <view class="slider">
             <view class="hd">
-                <view class="menu-item" v-for="item in 10" :key="item">
+                <view class="menu-item" v-for="item in 15" :key="item">
                     主控芯片
                 </view>
             </view>
@@ -67,18 +67,11 @@
                                 <view class="sub">-</view>
                                 <view class="count">5</view>
                                 <view class="add" @click="addCart">+</view>
-
-
                             </view>
                         </view>
                     </view>
                 </view>
             </view>
-        </view>
-
-        <!-- 抛物线元素 -->
-        <view :animation="animationData" :style="{ left: `${shallStyle.offsetLeft}px`, top: `${shallStyle.offsetTop}px` }"
-            class="shall">+
         </view>
 
         <!-- 购物车 -->
@@ -112,69 +105,10 @@ const onClickItem = (e: any) => {
     }
 }
 
-const zindex = ref(-1)
-const animationData = ref<any>(null)
-const shallStyle = ref({
-    offsetLeft: 0,
-    offsetTop: 0
-})
+
 
 //添加购物车
 const addCart = (event: any) => {
-    console.log(event, '时机');
-    zindex.value = 9999
-    const { x, y } = event.detail
-    console.log(x, y, '数据');
-
-    nextTick(() => {
-        shallStyle.value.offsetLeft = x
-        shallStyle.value.offsetTop = y
-    })
-    setTimeout(() => {
-        console.log(shallStyle.value.offsetLeft, shallStyle.value.offsetTop, '最新数据');
-
-        const startPoint = { x: x, y: y }; // 起始位置 (右上角)
-        const endPoint = { x: 5, y: 480 }; // 目标位置 (左下角)
-
-        const duration = 1000; // 动画持续时间
-        const frameRate = 60; // 帧率
-        const totalFrames = duration / (1000 / frameRate); // 总帧数
-
-        const animation = uni.createAnimation({
-            duration: duration, // 动画持续时间
-            timingFunction: 'ease-out', // 缓动函数
-        });
-
-        const stepX = (endPoint.x - startPoint.x) / totalFrames; // 每帧在X轴上的位移
-        const stepY = (endPoint.y - startPoint.y) / totalFrames; // 每帧在Y轴上的位移
-
-        let currentFrame = 0; // 当前帧数
-        let currentX = startPoint.x; // 当前X位置
-        let currentY = startPoint.y; // 当前Y位置
-
-        const moveElement = () => {
-            animation.translate(currentX, currentY).step();
-
-            animationData.value = animation.export();
-
-            if (currentFrame < totalFrames) {
-                currentFrame++;
-                currentX += stepX;
-                currentY += stepY;
-                setTimeout(moveElement, 1000 / frameRate);
-            } else {
-                // 动画结束后的操作
-                // ...
-                animationData.value = null
-                zindex.value = -1
-            }
-        };
-
-        moveElement();
-
-    }, 0)
-
-
 
 }
 

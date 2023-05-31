@@ -54,6 +54,7 @@
     "@dcloudio/uni-quickapp-webview": "3.0.0-alpha-3080320230523001",
     "@dcloudio/uni-ui": "^1.4.27",
     "@types/node": "^20.2.5",
+    "@zebra-ui/swiper": "^2.2.6",
     "sass": "^1.62.1",
     "unplugin-auto-import": "^0.16.2",
     "unplugin-vue-components": "^0.24.1",

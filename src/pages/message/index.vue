@@ -8,7 +8,7 @@
                 read：已读样式
                 unread：未读样式
              -->
-            <view class="card top read">
+            <view class="card top read" @click="toDetail">
                 <view class="title">订单审核通过通知</view>
                 <view class="bd">
                     <view class="time">2023/5/29 15:35:26</view>
@@ -18,7 +18,7 @@
                     </view>
                 </view>
             </view>
-            <view class="card unread" v-for="item in 8" :key="item">
+            <view class="card unread" v-for="item in 8" :key="item" @click="toDetail">
                 <view class="title">订单审核通过通知</view>
                 <view class="bd">
                     <view class="time">2023/5/29 15:35:26</view>
@@ -37,6 +37,11 @@
 <script setup lang='ts'>
 import GdNavbar from '@/components/gd-navbar/index.vue'
 import GdTabbar from '@/components/gd-tabbar/index.vue'
+
+const toDetail = () => {
+    uni.navigateTo({ url: '/pages/message/detail' })
+}
+
 </script>
     
 <style lang="scss" scoped>

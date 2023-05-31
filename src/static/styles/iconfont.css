@@ -1,19 +1,78 @@
 @font-face {
-    font-family: "iconfont"; /* Project id 4093288 */
-    src: url('https://at.alicdn.com/t/c/font_4093288_kamqy12uhsk.woff2?t=1685359539769') format('woff2'),
-         url('https://at.alicdn.com/t/c/font_4093288_kamqy12uhsk.woff?t=1685359539769') format('woff'),
-         url('https://at.alicdn.com/t/c/font_4093288_kamqy12uhsk.ttf?t=1685359539769') format('truetype');
-  }
-  
-  .iconfont {
-    font-family: "iconfont" !important;
-    font-size: 16px;
-    font-style: normal;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-  
-  .icon-gouwuche:before {
-    content: "\e63f";
-  }
-  
+  font-family: "iconfont"; /* Project id 4093288 */
+  src: url('https://at.alicdn.com/t/c/font_4093288_o2mi1b779e7.woff2?t=1685541054089') format('woff2'),
+       url('https://at.alicdn.com/t/c/font_4093288_o2mi1b779e7.woff?t=1685541054089') format('woff'),
+       url('https://at.alicdn.com/t/c/font_4093288_o2mi1b779e7.ttf?t=1685541054089') format('truetype');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-dizhi:before {
+  content: "\e642";
+}
+
+.icon-anquanjianchaoff:before {
+  content: "\e612";
+}
+
+.icon-jianchafuwu:before {
+  content: "\e641";
+}
+
+.icon-baoguo_lanshou_o:before {
+  content: "\ebb8";
+}
+
+.icon-xiaohuoche:before {
+  content: "\e620";
+}
+
+.icon-daifahuo:before {
+  content: "\e640";
+}
+
+.icon-daifukuan:before {
+  content: "\e61d";
+}
+
+.icon-express-package:before {
+  content: "\e8b6";
+}
+
+.icon-a-8tiaodufeihesuan:before {
+  content: "\e670";
+}
+
+.icon-shouye:before {
+  content: "\e62e";
+}
+
+.icon-kefu:before {
+  content: "\e61b";
+}
+
+.icon-fahuo:before {
+  content: "\e6d5";
+}
+
+.icon-gouwuchexuanzhong:before {
+  content: "\e600";
+}
+
+.icon-shoucang:before {
+  content: "\e639";
+}
+
+.icon-fenxiang:before {
+  content: "\e626";
+}
+
+.icon-gouwuche:before {
+  content: "\e63f";
+}

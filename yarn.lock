@@ -2379,6 +2379,11 @@
   resolved "https://registry.npmmirror.com/@vue/tsconfig/-/tsconfig-0.1.3.tgz#4a61dbd29783d01ddab504276dcf0c2b6988654f"
   integrity sha512-kQVsh8yyWPvHpb8gIc9l/HIDiiVUy1amynLNpCy8p+FoCiZXCo6fQos5/097MmnNZc9AtseDsCrfkhqCrJ8Olg==
 
+"@zebra-ui/swiper@^2.2.6":
+  version "2.2.6"
+  resolved "https://registry.npmmirror.com/@zebra-ui/swiper/-/swiper-2.2.6.tgz#9559bd46925c8bfd4bdb1dd5713974e2f41a2211"
+  integrity sha512-hZX3ky98P6xovsLRePKx5kX2dQMRQgYA5Q+qRXswytgzVzWUX2bGH8a2D2IpD7vwc1vq1w3IoJix6LkG7JyA+A==
+
 accepts@~1.3.8:
   version "1.3.8"
   resolved "https://registry.npmmirror.com/accepts/-/accepts-1.3.8.tgz#0bf0be125b67014adcb0b0921e62db7bffe16b2e"

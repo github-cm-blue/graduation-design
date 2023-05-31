@@ -19,15 +19,33 @@
 			}
 		},
 		{
-			"path": "pages/order/index",
+			"path": "pages/cart/index",
 			"style": {
-				"navigationBarTitleText": "订单"
+				"navigationBarTitleText": "购物车"
 			}
 		},
 		{
 			"path": "pages/profile/index",
 			"style": {
 				"navigationBarTitleText": "我的"
+			}
+		},
+		{
+			"path": "pages/product/detail",
+			"style": {
+				"navigationBarTitleText": "作品详情"
+			}
+		},
+		{
+			"path": "pages/order/index",
+			"style": {
+				"navigationBarTitleText": "订单"
+			}
+		},
+		{
+			"path": "pages/message/detail",
+			"style": {
+				"navigationBarTitleText": "消息详情"
 			}
 		}
 	],
@@ -42,7 +60,9 @@
 		"autoscan": true,
 		"custom": {
 			// uni-ui 规则如下配置
-			"^uni-(.*)": "@dcloudio/uni-ui/lib/uni-$1/uni-$1.vue"
+			"^uni-(.*)": "@dcloudio/uni-ui/lib/uni-$1/uni-$1.vue",
+			// @zebra-ui/swiper
+			"^z-(.*)": "@zebra-ui/swiper/components/z-$1/z-$1.vue"
 		}
 	},
 	"tabBar": {
@@ -72,10 +92,10 @@
 				"text": "消息"
 			},
 			{
-				"pagePath": "pages/order/index",
+				"pagePath": "pages/cart/index",
 				"iconPath": "/static/images/tabbar/cart.png",
 				"selectedIconPath": "/static/images/tabbar/cartactive.png",
-				"text": "订单"
+				"text": "购物车"
 			},
 			{
 				"pagePath": "pages/profile/index",
